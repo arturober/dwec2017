@@ -55,7 +55,7 @@ function appendProduct(p, container) {
     tdDelete.appendChild(buttonDelete);
 
     buttonDelete.addEventListener('click', event => {
-        deleteProduct(p.id);
+        deleteProduct(p);
     });
 
     tr.appendChild(tdPhoto);
@@ -66,12 +66,14 @@ function appendProduct(p, container) {
     container.appendChild(tr);
 }
 
-function deleteProduct(id) {
-    ajax('DELETE', `${SERVER}/product/${id}`)
+function deleteProduct(p) {
+    ajax('DELETE', `${SERVER}/product/${p.id}`)
         .then(data => {
             if(data.ok) {
-                let tr = document.getElementById(`p${id}`);
+                let tr = document.getElementById(`p${p.id}`);
                 tr.parentElement.removeChild(tr);
+                let index = products.indexOf(p);
+                if(index >= 0) products.splice(index, 1);
             }
         }).catch(error => console.error(error));
 }
@@ -86,8 +88,8 @@ function getProducts() {
 function addProduct(prodJSON) {
     ajax('POST', `${SERVER}/product/json`, JSON.stringify(prodJSON))
         .then(data => {
-            let p = JSON.parse(http.responseText).data;
-            appendProduct(p, document.getElementById("productContainer"));
+            products.push(data.product);
+            replaceProducts();
         });
 }
 
