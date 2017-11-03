@@ -1,0 +1,15 @@
+tr.even {
+  background-color: rgb(211, 250, 250);
+}
+
+td:first-child img {
+  height: 40px;
+}
+
+td {
+  vertical-align:middle;
+}
+
+.prod-image img {
+  height: 80px;
+}

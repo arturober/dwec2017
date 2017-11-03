@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    {{title}}
+    <button class="btn btn-sm btn-light ml-4"
+            *ngIf="!showAddProd" (click)="showAddProd = true">
+            New Product</button>
+  </div>
+  <div class="card-block">
+    <form class="form m-3" *ngIf="showAddProd" (ngSubmit)="addProduct()">
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="filterDesc">Description:</label>
+          <input type="text" [(ngModel)]="newProd.description" class="form-control" name="description" placeholder="Description">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="filterDesc">Price:</label>
+          <input type="number" [(ngModel)]="newProd.price" class="form-control" name="price" placeholder="Date">
+        </div>
+        <div class="form-group col">
+          <label for="filterDesc">Available:</label>
+          <input type="date" [(ngModel)]="newProd.available" class="form-control" name="available" placeholder="Available date">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="filterDesc">Image:</label>
+          <input type="file" #fileImage (change)="changeImage(fileImage)" class="form-control" name="image">
+        </div>
+        <div class="col prod-image">
+          <img [src]="newProd.imageUrl" *ngIf="newProd.imageUrl" alt="">
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary mr-3">Add Product</button>
+        <button type="button" class="btn btn-danger" (click)="cancelAddProd()"> Cancel</button>
+      </div>
+
+    </form>
+
+    <form class="form mt-3" *ngIf="!showAddProd">
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc">Filter:</label>
+        <div class="col-sm-5">
+          <input type="text" [(ngModel)]="filterSearch" class="form-control" name="filterDesc" id="filterDesc" placeholder="Filter...">
+        </div>
+        <label class="col-form-label col-sm-5">
+          Filtered by: {{filterSearch}}</label>
+      </div>
+    </form>
+
+    <div class="table-responsive" *ngIf="!showAddProd && products && products.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-sm" [ngClass]="{'btn-danger': showImages, 'btn-primary': !showImages}" (click)="toggleImage()">
+                {{showImages?'Hide':'Show'}} images
+              </button>
+            </th>
+            <th>{{headers.desc}}</th>
+            <th>{{headers.price}}</th>
+            <th>{{headers.avail}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products | productsFilter:filterSearch; let isEven = even" [ngClass]="{'even': isEven}">
+            <td>
+              <img [src]="prod.imageUrl" *ngIf="showImages" alt="">
+            </td>
+            <td>{{prod.description}}</td>
+            <td>{{prod.price | currency:'EUR':'symbol' }}</td>
+            <td>{{prod.available | date:'dd/MM/y'}}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="deleteProduct(prod)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
