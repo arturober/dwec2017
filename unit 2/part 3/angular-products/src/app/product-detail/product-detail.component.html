@@ -1,0 +1,20 @@
+<div class="card">
+    <h4 class="card-header bg-primary text-white">{{product?.description}}</h4>
+    <div class="card-block p-3  text-center">
+        <img *ngIf="product" [src]="product.imageUrl" alt=""
+            [title]="product.description | uppercase">
+
+        <div>{{ product?.price | currency:'EUR':true }}</div>
+        <div>{{ product?.available | date:'dd/MM/y' }}</div>
+        <div>
+            <ap-star-rating *ngIf="product" [rating]="product.rating" (ratingChanged)="changeRating($event)"></ap-star-rating>
+        </div>
+
+        <button class="btn btn-primary" (click)="goBack()">
+            Go back
+        </button>
+        <!-- <button class="btn btn-success" (click)="editProduct()">
+                Edit product
+            </button> -->
+    </div>
+</div>
