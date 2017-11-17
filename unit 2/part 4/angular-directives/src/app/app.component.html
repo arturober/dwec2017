@@ -1,0 +1,15 @@
+<div>
+  <select [(ngModel)]="color">
+    <option value="yellow">Yellow</option>
+    <option value="red">Red</option>
+    <option value="#06F">Blue</option>
+  </select>
+</div>
+<div adSetColor [color]="color" *adRepeatTimes="5; let n = current">
+  Hello {{n}}
+</div>
+
+<div *adForFilter="let p from persons by filter">
+  <p>{{ p | json }}</p>
+</div>
+

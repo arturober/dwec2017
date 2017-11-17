@@ -1,0 +1,35 @@
+<form class="form m-3" (ngSubmit)="addProduct()">
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="filterDesc">Description:</label>
+        <input type="text" [(ngModel)]="newProd.description" class="form-control" name="description" placeholder="Description">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="filterDesc">Price:</label>
+        <input type="number" [(ngModel)]="newProd.price" class="form-control" name="price" placeholder="Date">
+      </div>
+      <div class="form-group col">
+        <label for="filterDesc">Available:</label>
+        <input type="date" [(ngModel)]="newProd.available" class="form-control" name="available" placeholder="Available date">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="filterDesc">Image:</label>
+        <input type="file" #fileImage (change)="changeImage(fileImage)" class="form-control" name="image">
+      </div>
+      <div class="col prod-image">
+        <img [src]="newProd.imageUrl" *ngIf="newProd.imageUrl" alt="">
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary mr-3">Add Product</button>
+      <button type="button" class="btn btn-danger" (click)="cancelAddProd()"> Cancel</button>
+    </div>
+
+  </form>

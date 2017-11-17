@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    {{title}}
+  </div>
+  <div class="card-block">
+    <div *ngIf="products && products.length">
+      <div class="row headers no-gutters">
+        <div class="col-2">
+          <button class="btn btn-sm" [ngClass]="{'btn-danger': showImages, 'btn-primary': !showImages}" (click)="toggleImage()">
+            {{showImages?'Hide':'Show'}} images
+          </button>
+        </div>
+        <div class="col-4">{{headers.desc}}</div>
+        <div class="col">{{headers.price}}</div>
+        <div class="col">{{headers.avail}}</div>
+        <div class="col">{{headers.rating}}</div>
+        <div class="col"></div>
+      </div>
+
+      <ap-product-item class="row no-gutters" [ngClass]="{'even': isEven}"
+        *ngFor="let prod of products | productsFilter:filterSearch; let isEven = even"
+        [product]="prod" [showImage]="showImages" (deleted)="deleteProduct(prod)"></ap-product-item>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
+import { ProductDetailResolveService } from './guards/product-detail-resolve.service';
+import { ProductAddDeactivateGuard } from './guards/product-add-deactivate.guard';
 import { APP_ROUTES } from './app.routes';
-import { ProductDetailGuard } from './services/product-detail-guard.service';
+import { ProductDetailGuard } from './guards/product-detail.guard';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
@@ -36,7 +38,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     providers: [
         ProductService,
         Title,
-        ProductDetailGuard
+        ProductDetailGuard,
+        ProductAddDeactivateGuard,
+        ProductDetailResolveService
     ],
     bootstrap: [AppComponent]
 })
