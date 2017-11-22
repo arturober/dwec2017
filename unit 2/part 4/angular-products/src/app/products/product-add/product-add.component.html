@@ -1,35 +1,53 @@
-<form class="form m-3" (ngSubmit)="addProduct()">
-    <div class="form-row">
-      <div class="form-group col">
-        <label for="filterDesc">Description:</label>
-        <input type="text" [(ngModel)]="newProd.description" class="form-control" name="description" placeholder="Description">
+<form class="form m-3" (ngSubmit)="addProduct()" #addForm="ngForm">
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="filterDesc">Description:</label>
+      <input type="text" [(ngModel)]="newProd.description" class="form-control" name="description" placeholder="Description" required
+        minlength="5" maxlength="20" #description="ngModel"
+        [ngClass]="validClasses(description, 'is-valid', 'is-invalid')">
+      <div *ngIf="description.touched && description.invalid" class="alert alert-danger">
+        Description is required and between 5 and 20 characters
       </div>
+      <div>{{description.errors | json}}</div>
     </div>
+  </div>
 
-    <div class="form-row">
-      <div class="form-group col">
-        <label for="filterDesc">Price:</label>
-        <input type="number" [(ngModel)]="newProd.price" class="form-control" name="price" placeholder="Date">
-      </div>
-      <div class="form-group col">
-        <label for="filterDesc">Available:</label>
-        <input type="date" [(ngModel)]="newProd.available" class="form-control" name="available" placeholder="Available date">
-      </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="filterDesc">Price:</label>
+      <input type="number" [(ngModel)]="newProd.price" class="form-control" name="price" placeholder="Price" required #price="ngModel"
+        [ngClass]="{'is-valid': price.touched && price.valid,
+                'is-invalid': price.touched && price.invalid}">
     </div>
-
-    <div class="form-row">
-      <div class="form-group col">
-        <label for="filterDesc">Image:</label>
-        <input type="file" #fileImage (change)="changeImage(fileImage)" class="form-control" name="image">
-      </div>
-      <div class="col prod-image">
-        <img [src]="newProd.imageUrl" *ngIf="newProd.imageUrl" alt="">
-      </div>
+    <div class="form-group col">
+      <label for="filterDesc">Available:</label>
+      <input type="date" [(ngModel)]="newProd.available" class="form-control" name="available" placeholder="Available date" required
+        #available="ngModel" [apMinDate]="minDate"
+        [ngClass]="{'is-valid': available.touched && available.valid,
+               'is-invalid': available.touched && available.invalid}">
+        <div *ngIf="available.touched && available.invalid && available.errors.minDate" class="alert alert-danger">
+            The minimum date is {{available.errors.minDate}}
+        </div>
+        <div>{{available.errors | json}}</div>
     </div>
+  </div>
 
-    <div>
-      <button type="submit" class="btn btn-primary mr-3">Add Product</button>
-      <button type="button" class="btn btn-danger" (click)="cancelAddProd()"> Cancel</button>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="filterDesc">Image:</label>
+      <input type="file" #fileImage (change)="changeImage(fileImage)" class="form-control" name="image">
     </div>
+    <div class="col prod-image">
+      <img [src]="newProd.imageUrl" *ngIf="newProd.imageUrl" alt="">
+    </div>
+  </div>
+  <div>
+    {{addForm.value | json}}
+  </div>
 
-  </form>
+  <div>
+    <button type="submit" class="btn btn-primary mr-3" [disabled]="addForm.invalid">Add Product</button>
+    <button type="button" class="btn btn-danger" (click)="cancelAddProd()"> Cancel</button>
+  </div>
+
+</form>

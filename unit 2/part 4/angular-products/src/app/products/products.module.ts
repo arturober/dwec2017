@@ -1,3 +1,4 @@
+import { SharedModule } from '../shared/shared.module';
 import { RatingModule } from '../rating/rating.module';
 import { PRODUCT_ROUTES } from './products.routes';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
         CommonModule,
         FormsModule,
         RouterModule.forChild(PRODUCT_ROUTES),
-        RatingModule
+        RatingModule,
+        SharedModule
     ],
     declarations: [
         ProductItemComponent,

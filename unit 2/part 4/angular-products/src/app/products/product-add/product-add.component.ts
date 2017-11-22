@@ -2,7 +2,14 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ProductService } from '../services/product.service';
 import { IProduct } from '../interfaces/i-product';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    OnInit,
+    Output,
+    ViewChild
+} from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Component({
     selector: 'ap-product-add',
@@ -12,9 +19,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class ProductAddComponent implements OnInit {
     newProd: IProduct;
     cancelled = false;
+    minDate = new Date();
+    @ViewChild('addForm') addForm: NgForm;
 
-    constructor(private productService: ProductService, private titleService: Title,
-                private router: Router) {}
+    constructor(
+        private productService: ProductService,
+        private titleService: Title,
+        private router: Router
+    ) {}
 
     ngOnInit() {
         this.titleService.setTitle('New product | Angular products');
@@ -33,13 +45,13 @@ export class ProductAddComponent implements OnInit {
     }
 
     addProduct() {
+        console.log(this.addForm.value);
         this.productService.addProduct(this.newProd).subscribe(
-            ok =>  {
+            ok => {
                 this.router.navigate(['/products']);
             },
             error => console.error(error)
         );
-
     }
 
     cancelAddProd() {
@@ -55,6 +67,13 @@ export class ProductAddComponent implements OnInit {
             imageUrl: '',
             price: 0,
             rating: 0
+        };
+    }
+
+    validClasses(ngModel: NgModel, validClass: string, errorClass: string) {
+        return {
+            [validClass]: ngModel.touched && ngModel.valid,
+            [errorClass]: ngModel.touched && ngModel.invalid
         };
     }
 }
