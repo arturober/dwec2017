@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutWrap class="zero">
+  <div fxFlex="33" fxFlex.lt-md="100" class="one"></div>
+  <div fxFlex="33" fxFlex.xs="" fxLayout="column" fxLayout.xs="row" class="two">
+    <div fxFlex="20" class="two_one"></div>
+    <div fxFlex="40px" class="two_two"></div>
+    <div fxFlex class="two_three"></div>
+  </div>
+  <div fxFlex fxHide.xs class="three"></div>
+</div>
+
+<div>
+  Home
+  <mat-icon>home</mat-icon>
+</div>
+<div>
+  Payment
+  <mat-icon>payment</mat-icon>
+</div>
+
+<p>
+  <button mat-raised-button color="primary" (click)="launchModal()">
+    Launch modal
+  </button>
+</p>
+<p>
+  Last dialog response: {{resp}}
+</p>
