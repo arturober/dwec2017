@@ -1,0 +1,15 @@
+{
+  "name": "socketio-chat-server",
+  "version": "1.0.0",
+  "description": "Socket.IO simple chat server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "Arturo Bernal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
