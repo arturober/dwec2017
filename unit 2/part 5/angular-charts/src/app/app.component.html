@@ -1,0 +1,24 @@
+<div style="height: 400px;">
+  <ngx-charts-bar-vertical
+    [view]="view"
+    [results]="data"
+    [gradient]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="legend"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Millions"
+    yAxisLabel="Fruits"
+    (select)="onSelect($event)">
+  </ngx-charts-bar-vertical>
+</div>
+
+<h4>Add Fruit:</h4>
+<p>Type:
+  <input type="text" [(ngModel)]="newFruit.name">
+</p>
+<p>Quantity:
+  <input type="number" [(ngModel)]="newFruit.value">
+</p>
+<p><button (click)="addFruit()">Add</button></p>

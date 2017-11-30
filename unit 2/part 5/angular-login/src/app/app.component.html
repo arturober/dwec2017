@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <button alGoogleLogin (loginOk)="loggedGoogle($event)" (loginError)="showError($event)">
+    Login with Google
+  </button>
+
+  <button alFbLogin [scopes]="['email', 'public_profile']"
+         (loginOk)="loggedFacebook($event)" (loginError)="showError($event)">
+    Login with Facebook
+  </button>
+</div>
+
+
