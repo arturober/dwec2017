@@ -1,6 +1,6 @@
 <div class="chat-container">
   <p *ngFor="let m of messages" [ngClass]="{'mine': m.mine}">
-    <strong>{{m.user}}:</strong> {{m.text}}
+    <strong>{{m.mine ? 'me' : m.user}}:</strong> {{m.text}}
   </p>
 </div>
 <p>
@@ -9,4 +9,4 @@
   <button (click)="connect()" [disabled]="connected">Connect</button>
   <button (click)="disconnect()" [disabled]="!connected">Disconnect</button>
 </p>
-<p>Status: {{connected ? 'Connected' : 'Disconnected'}}</p>
+<p>Status: {{connected ? 'Connected as ' + user : 'Disconnected'}}</p>

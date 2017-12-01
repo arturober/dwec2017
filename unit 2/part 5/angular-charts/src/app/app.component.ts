@@ -15,6 +15,7 @@ export class AppComponent {
     name: 'Apple',
     value: 3500
   }];
+  selected: {name: string, value: number} = null;
 
   newFruit: {name: string, value: number} = {
     name: '',
@@ -22,12 +23,21 @@ export class AppComponent {
   };
 
   onSelect(result) {
-    console.log(result);
+    this.selected = result;
   }
 
   addFruit() {
     // We can't do a push, we need to replace the array
     this.data = [...this.data, this.newFruit];
     this.newFruit = { name: '', value: 0};
+  }
+
+  deleteSelected() {
+    this.data = this.data.filter(f => f.name !== this.selected.name);
+  }
+
+  updateSelected() {
+    this.data[this.data.findIndex(f => f.name === this.selected.name)] = this.selected;
+    this.data = [...this.data];
   }
 }

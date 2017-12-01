@@ -19,6 +19,8 @@ export class AppComponent {
   loggedFacebook(resp: FB.LoginStatusResponse) {
     // Send this to your server
     console.log(resp.authResponse.accessToken);
+
+    FB.api('/me', me => console.log(me));
   }
 
   showError(error) {

@@ -17,8 +17,16 @@
 <h4>Add Fruit:</h4>
 <p>Type:
   <input type="text" [(ngModel)]="newFruit.name">
-</p>
-<p>Quantity:
+  Quantity:
   <input type="number" [(ngModel)]="newFruit.value">
 </p>
 <p><button (click)="addFruit()">Add</button></p>
+
+<h4 *ngIf="selected">Selected</h4>
+<p *ngIf="selected">
+  Type: {{selected.name}}
+  Quantity:
+  <input type="number" [(ngModel)]="selected.value">
+  <button (click)="updateSelected()">Update</button>
+  <button (click)="deleteSelected()">Delete</button>
+</p>
