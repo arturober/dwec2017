@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, stagger, query } from '@angular/animations';
 import { Title } from '@angular/platform-browser';
 import { ProductService } from '../services/product.service';
 import { IProduct } from '../interfaces/i-product';
@@ -9,18 +9,24 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css'],
     animations: [
-        trigger('animateList', [
+        trigger('animateProd', [
             state('selected', style({ borderLeft: '40px solid lightgreen' })),
-            transition(':enter', [
-                style({ opacity: 0, transform:  'translateX(-100%)' }),
-                animate('500ms ease', style({ opacity: 1, transform: 'translateX(50px)' })),
-                animate('100ms ease', style({ transform: 'none' }))
-            ]),
             transition(':leave', [
                 animate('500ms ease', style({ opacity: 0, transform: 'translateX(100%)' }))
             ]),
             transition('* <=> selected', [
                 animate('500ms ease')
+            ])
+        ]),
+        trigger('animateList', [
+            transition(':enter', [
+                query('ap-product-item', [
+                    style({ opacity: 0, transform:  'translateX(-200px)' }),
+                    stagger(100, [
+                        animate('400ms ease', style({ opacity: 1, transform: 'translateX(50px)' })),
+                        animate('200ms ease', style({ transform: 'none' }))
+                    ])
+                ], { optional: true })
             ])
         ])
     ]

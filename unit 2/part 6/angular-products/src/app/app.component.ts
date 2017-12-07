@@ -9,7 +9,7 @@ import { animate, animateChild, group, query, style, transition, trigger } from 
     animations: [
         trigger('routeAnimation', [
             transition('productList => productDetail', [
-                query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, width: '100%' })),
+                query(':enter, :leave', style({ position: 'absolute', width: '100%' })),
                 query(':enter', style({ transform: 'translateX(100%)' })),
                 group([
                     query(':leave', [
@@ -21,7 +21,7 @@ import { animate, animateChild, group, query, style, transition, trigger } from 
                 ])
             ]),
             transition('productDetail => productList', [
-                query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, width: '100%' })),
+                query(':enter, :leave', style({ position: 'absolute', width: '100%' })),
                 query(':enter', style({ transform: 'translateX(-100%)' })),
                 group([
                     query(':leave', [

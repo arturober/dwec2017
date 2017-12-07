@@ -3,7 +3,7 @@
     {{title}}
   </div>
   <div class="card-block">
-    <div *ngIf="products && products.length">
+    <div *ngIf="products && products.length" [@animateList]="products.length">
       <div class="row headers no-gutters">
         <div class="col-2">
           <button class="btn btn-sm" [ngClass]="{'btn-danger': showImages, 'btn-primary': !showImages}" (click)="toggleImage()">
@@ -18,7 +18,7 @@
       </div>
 
       <ap-product-item class="row no-gutters" [ngClass]="{'even': isEven}"
-        [@animateList]="prod.state" (click)="toggleSelected(prod)"
+        [@animateProd]="prod.state" (click)="toggleSelected(prod)"
         *ngFor="let prod of products | productsFilter:filterSearch; let isEven = even"
         [product]="prod" [showImage]="showImages" (deleted)="deleteProduct(prod)"></ap-product-item>
     </div>
