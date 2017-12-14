@@ -1,0 +1,15 @@
+ap-product-item.even {
+    background-color: rgb(227, 250, 250);
+}
+
+.headers {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.prod-image img {
+    height: 80px;
+}
