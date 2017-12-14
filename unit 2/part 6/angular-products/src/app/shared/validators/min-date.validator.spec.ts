@@ -1,4 +1,4 @@
-import { MinDateDirective } from './min-date.directive';
+import { MinDateDirective } from './min-date.validator';
 
 describe('MinDateDirective', () => {
   it('should create an instance', () => {

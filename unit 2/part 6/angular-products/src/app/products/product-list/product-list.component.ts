@@ -23,8 +23,7 @@ import { Component, OnInit } from '@angular/core';
                 query('ap-product-item', [
                     style({ opacity: 0, transform:  'translateX(-200px)' }),
                     stagger(100, [
-                        animate('400ms ease', style({ opacity: 1, transform: 'translateX(50px)' })),
-                        animate('200ms ease', style({ transform: 'none' }))
+                        animate('600ms cubic-bezier(.64,.49,.49,1.54)', style({ opacity: 1, transform: 'none' })),
                     ])
                 ], { optional: true })
             ])

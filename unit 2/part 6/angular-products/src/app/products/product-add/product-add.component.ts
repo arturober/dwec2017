@@ -31,6 +31,7 @@ export class ProductAddComponent implements OnInit {
     ngOnInit() {
         this.titleService.setTitle('New product | Angular products');
         this.initializeNewProd();
+        console.log(this.addForm);
     }
 
     changeImage(fileInput: HTMLInputElement) {
