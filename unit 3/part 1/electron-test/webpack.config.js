@@ -17,9 +17,9 @@ const moduleCommon = {
 let electronMain = {
     target: 'electron-main',
     context: __dirname + '/src',
-    entry: './index.ts',
+    entry: './main.ts',
     output: {
-        filename: 'index.js',
+        filename: 'main.js',
         path: __dirname + '/dist'
     },
     resolve: {
@@ -33,7 +33,7 @@ let electronRenderer = {
     context: __dirname + '/src',
     entry: {
         dialog: './dialog.ts',
-        app: './app.ts'
+        index: './index.ts'
     },
     output: {
         filename: '[name].js',
