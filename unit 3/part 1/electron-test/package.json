@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "Electron example",
   "main": "dist/main.js",
+  "productName": "ElectronTest",  
   "scripts": {
-    "build": "webpack",
-    "start": "npm run build && electron ."    
+    "start": "npm run build && electron .",
+    "prebuild": "rimraf ElectronTest-*",
+    "build": "npm run webpack && electron-packager . --platform=linux --arch=x64 --icon=icon",
+    "webpack": "webpack"
   },
   "author": "Arturo Bernal",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^8.5.1",
     "electron": "^1.7.9",
+    "electron-packager": "^10.1.0",
+    "rimraf": "^2.6.2",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0"

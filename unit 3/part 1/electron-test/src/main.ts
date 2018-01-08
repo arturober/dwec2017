@@ -1,6 +1,7 @@
 import { app, ipcMain, BrowserWindow, Menu, Tray } from 'electron';
 import * as url from 'url';
 import * as path from 'path';
+import * as fs from 'fs';
 import { menuTemplate } from './menu';
 
 let win: BrowserWindow = null;
@@ -9,7 +10,7 @@ let winDialog: BrowserWindow = null;
 app.setName('Electron example');
 
 app.on('ready', () => {
-    const tray = new Tray(path.join('img', 'icon.png'));
+    const tray = new Tray(path.join(app.getAppPath(),'img', 'icon.png'));
     const trayMenu = Menu.buildFromTemplate([
         {
             label: 'Item 1'
@@ -21,7 +22,7 @@ app.on('ready', () => {
     tray.setToolTip('Electron example');
 
     win = new BrowserWindow();
-    win.setContentSize(800, 600);
+    win.setContentSize(1024, 600);
 
     win.loadURL(
         url.format({
@@ -65,3 +66,25 @@ ipcMain.on('openDialog', (event, name) => {
 ipcMain.on('closeDialog', event => {
     if (winDialog) winDialog.close();
 });
+
+// function fileExists(file) {
+//     return new Promise((resolve, reject) => {
+//         fs.exists(file, ok => {
+//             if(ok) resolve();
+//             reject();
+//         });
+//     });
+// }
+
+// function makeDir(dir) {
+//     return new Promise((resolve, reject) => {
+//         fs.mkdir(dir, error => {
+//             if(error) reject();
+//             resolve();
+//         });
+//     });
+// }
+
+// fileExists('test')
+//     .catch(() => makeDir('test'))
+//     .then(() => fs.writeFile("test/hello.txt", "Hello World", (error) => {}));

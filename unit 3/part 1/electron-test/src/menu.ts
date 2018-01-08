@@ -1,3 +1,5 @@
+import { shell } from 'electron';
+
 export const menuTemplate: Electron.MenuItemConstructorOptions[] = [
     {
         label: 'My app',
@@ -21,5 +23,17 @@ export const menuTemplate: Electron.MenuItemConstructorOptions[] = [
     },
     {
         role: 'editMenu'
+    },
+    {
+        label: 'About',
+        submenu: [
+            {
+                label: 'About Electron',
+                click: (menuItem, win, event) => {
+                    // Open an external browser with this url
+                    shell.openExternal('https://electronjs.org');
+                }
+            }
+        ]
     }
 ];

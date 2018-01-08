@@ -60,16 +60,22 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_electron__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_url__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_url___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_url__);
@@ -84,7 +90,7 @@ let win = null;
 let winDialog = null;
 __WEBPACK_IMPORTED_MODULE_0_electron__["app"].setName('Electron example');
 __WEBPACK_IMPORTED_MODULE_0_electron__["app"].on('ready', () => {
-    const tray = new __WEBPACK_IMPORTED_MODULE_0_electron__["Tray"](__WEBPACK_IMPORTED_MODULE_2_path__["join"]('img', 'icon.png'));
+    const tray = new __WEBPACK_IMPORTED_MODULE_0_electron__["Tray"](__WEBPACK_IMPORTED_MODULE_2_path__["join"](__WEBPACK_IMPORTED_MODULE_0_electron__["app"].getAppPath(), 'img', 'icon.png'));
     const trayMenu = __WEBPACK_IMPORTED_MODULE_0_electron__["Menu"].buildFromTemplate([
         {
             label: 'Item 1'
@@ -95,7 +101,7 @@ __WEBPACK_IMPORTED_MODULE_0_electron__["app"].on('ready', () => {
     tray.setContextMenu(trayMenu);
     tray.setToolTip('Electron example');
     win = new __WEBPACK_IMPORTED_MODULE_0_electron__["BrowserWindow"]();
-    win.setContentSize(800, 600);
+    win.setContentSize(1024, 600);
     win.loadURL(__WEBPACK_IMPORTED_MODULE_1_url__["format"]({
         pathname: __WEBPACK_IMPORTED_MODULE_2_path__["join"](__WEBPACK_IMPORTED_MODULE_0_electron__["app"].getAppPath(), 'index.html'),
         protocol: 'file:',
@@ -130,13 +136,26 @@ __WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"].on('closeDialog', event => {
     if (winDialog)
         winDialog.close();
 });
+// function fileExists(file) {
+//     return new Promise((resolve, reject) => {
+//         fs.exists(file, ok => {
+//             if(ok) resolve();
+//             reject();
+//         });
+//     });
+// }
+// function makeDir(dir) {
+//     return new Promise((resolve, reject) => {
+//         fs.mkdir(dir, error => {
+//             if(error) reject();
+//             resolve();
+//         });
+//     });
+// }
+// fileExists('test')
+//     .catch(() => makeDir('test'))
+//     .then(() => fs.writeFile("test/hello.txt", "Hello World", (error) => {}));
 
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("electron");
 
 /***/ }),
 /* 2 */
@@ -155,6 +174,9 @@ module.exports = require("path");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_electron__);
+
 const menuTemplate = [
     {
         label: 'My app',
@@ -178,6 +200,18 @@ const menuTemplate = [
     },
     {
         role: 'editMenu'
+    },
+    {
+        label: 'About',
+        submenu: [
+            {
+                label: 'About Electron',
+                click: (menuItem, win, event) => {
+                    // Open an external browser with this url
+                    __WEBPACK_IMPORTED_MODULE_0_electron__["shell"].openExternal('https://electronjs.org');
+                }
+            }
+        ]
     }
 ];
 /* harmony export (immutable) */ __webpack_exports__["a"] = menuTemplate;
