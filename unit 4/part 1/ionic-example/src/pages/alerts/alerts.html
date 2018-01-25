@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>alerts</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button block (tap)="showAlert()">Show alert</button>
+  <h3>{{hello}}</h3>
+  <button ion-button block (tap)="showCheckAlert()">Show check alert</button>
+  <h3 *ngIf="foods.length">{{foods | json}}</h3>
+</ion-content>

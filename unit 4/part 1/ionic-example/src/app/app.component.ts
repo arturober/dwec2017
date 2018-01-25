@@ -10,7 +10,7 @@ import { ListPage } from '../pages/list/list';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild('content') nav: Nav;
 
   rootPage: any = HomePage;
 
@@ -29,6 +29,9 @@ export class MyApp {
       { title: 'Check/Radio', component: 'CheckboxPage'},
       { title: 'Badges', component: 'BadgesPage'},
       { title: 'Toasts', component: 'ToastsPage'},
+      { title: 'Alerts', component: 'AlertsPage'},
+      { title: 'Navigation Push', component: 'PushNavPage'},
+      { title: 'Tabs page', component: 'TabsPage'},
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
 
   }
