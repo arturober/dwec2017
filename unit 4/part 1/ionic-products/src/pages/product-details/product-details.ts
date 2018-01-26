@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IProduct } from '../../interfaces/i-product';
 
 /**
- * Generated class for the PushNavPage page.
+ * Generated class for the ProductDetailsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,21 +11,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-push-nav',
-  templateUrl: 'push-nav.html',
+  selector: 'page-product-details',
+  templateUrl: 'product-details.html',
 })
-export class PushNavPage {
-  name: string = '';
+export class ProductDetailsPage {
+  product: IProduct = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PushNavPage');
-  }
-
-  goDetails() {
-    this.navCtrl.push('Detail1Page', {name: this.name});
+  ionViewDidEnter() {
+    this.product = this.navParams.data;
   }
 
 }

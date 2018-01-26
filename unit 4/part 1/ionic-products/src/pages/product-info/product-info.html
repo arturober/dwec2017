@@ -1,0 +1,10 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{navParams.data.description}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-tabs>
+    <ion-tab [root]="productDetailsRoot" [rootParams]="navParams.data" tabTitle="Details" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="productCommentsRoot" [rootParams]="navParams.data" tabTitle="Comments" tabIcon="chatboxes"></ion-tab>
+</ion-tabs>

@@ -11,5 +11,9 @@
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-label floating>Name:</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
   <button ion-button block (tap)="goDetails()">Go to details</button>
 </ion-content>

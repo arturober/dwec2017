@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the Detail1Page page.
+ * Generated class for the ProductCommentsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,27 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-detail1',
-  templateUrl: 'detail1.html',
+  selector: 'page-product-comments',
+  templateUrl: 'product-comments.html',
 })
-export class Detail1Page {
-  name: string;
+export class ProductCommentsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.name = this.navParams.data.name;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Detail1Page');
-  }
-
-
-  goBack() {
-    this.navCtrl.pop();
-  }
-
-  goDetails2() {
-    this.navCtrl.push('Detail2Page');
+    console.log('ionViewDidLoad ProductCommentsPage');
   }
 
 }
