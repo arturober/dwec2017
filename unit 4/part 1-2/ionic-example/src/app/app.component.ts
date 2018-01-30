@@ -32,6 +32,11 @@ export class MyApp {
       { title: 'Alerts', component: 'AlertsPage'},
       { title: 'Navigation Push', component: 'PushNavPage'},
       { title: 'Tabs page', component: 'TabsPage'},
+      { title: 'Action sheet', component: 'ActionSheetPage'},
+      { title: 'Fabs', component: 'FabsPage'},
+      { title: 'Grid', component: 'GridPage'},
+      { title: 'Loading indicator', component: 'LoadingPage'},
+      { title: 'Range', component: 'RangePage'},
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
 
   }
