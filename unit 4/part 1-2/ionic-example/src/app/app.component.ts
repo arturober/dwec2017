@@ -37,6 +37,14 @@ export class MyApp {
       { title: 'Grid', component: 'GridPage'},
       { title: 'Loading indicator', component: 'LoadingPage'},
       { title: 'Range', component: 'RangePage'},
+      { title: 'Pull to refresh', component: 'RefresherPage'},
+      { title: 'Infinite Scroll', component: 'InfitinePage'},
+      { title: 'Horizontal Scroll', component: 'ScrollPage'},
+      { title: 'Segments', component: 'SegmentsPage'},
+      { title: 'Select', component: 'SelectPage'},
+      { title: 'Slides', component: 'SlidesPage'},
+      { title: 'Toolbars', component: 'ToolbarPage'},
+      { title: 'Virtual Scroll', component: 'VirtualScrollPage'},
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
 
   }
