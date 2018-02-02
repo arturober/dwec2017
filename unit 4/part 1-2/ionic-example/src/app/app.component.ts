@@ -45,6 +45,7 @@ export class MyApp {
       { title: 'Slides', component: 'SlidesPage'},
       { title: 'Toolbars', component: 'ToolbarPage'},
       { title: 'Virtual Scroll', component: 'VirtualScrollPage'},
+      { title: 'Modal Launcher', component: 'ModalLauncherPage'},
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
 
   }
