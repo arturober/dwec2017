@@ -3,7 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { AuthProvider } from '../providers/auth/auth';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,32 +12,42 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'LoginPage';
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar,
+              public splashScreen: SplashScreen, public storage: Storage,
+              public authService: AuthProvider) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-    ];
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+      this.authService.isLogged()
+        .subscribe(
+          (ok) => this.rootPage = ok ? 'ProductsPage': 'LoginPage',
+          (error) => this.rootPage = 'LoginPage',
+          () => this.splashScreen.hide()
+        );
       this.splashScreen.hide();
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+  goProfile() {
+    this.nav.push('ProfilePage');
+  }
+
+  goMyProducts() {
+    this.nav.push('ProductsPage', {showMine: true});
+  }
+
+  goNewProduct() {
+    this.nav.push('NewProductPage');
+  }
+
+  logout() {
+    this.storage.remove('id_token').then(
+      () => this.nav.setRoot('LoginPage')
+    );
   }
 }

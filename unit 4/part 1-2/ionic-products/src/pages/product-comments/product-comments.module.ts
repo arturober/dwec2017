@@ -9,8 +9,5 @@ import { ProductCommentsPage } from './product-comments';
   imports: [
     IonicPageModule.forChild(ProductCommentsPage),
   ],
-  exports: [
-    ProductCommentsPage
-  ]
 })
 export class ProductCommentsPageModule {}

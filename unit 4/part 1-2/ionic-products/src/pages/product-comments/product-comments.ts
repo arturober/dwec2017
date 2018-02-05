@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IComment } from '../../models/comment';
+import { ProductsProvider } from '../../providers/products/products';
 
 /**
  * Generated class for the ProductCommentsPage page.
@@ -14,12 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'product-comments.html',
 })
 export class ProductCommentsPage {
+  comments: IComment[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public productsService: ProductsProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductCommentsPage');
+    this.productsService.getComments(this.navParams.data.id)
+      .subscribe(
+        comments => this.comments = comments
+      );
   }
 
 }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProductsProvider } from '../../providers/products/products';
+import { IProduct } from '../../models/product';
 
 /**
- * Generated class for the ProductInfoPage tabs.
+ * Generated class for the ProductInfoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,16 +13,25 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
 @IonicPage()
 @Component({
   selector: 'page-product-info',
-  templateUrl: 'product-info.html'
+  templateUrl: 'product-info.html',
 })
 export class ProductInfoPage {
-  productDetailsRoot = 'ProductDetailsPage'
-  productCommentsRoot = 'ProductCommentsPage'
+  product: IProduct;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public productsService: ProductsProvider) {
+    this.product = navParams.data;
+  }
 
   ionViewDidLoad() {
+    this.productsService.getProduct(this.product.id)
+      .subscribe(
+        product => this.product = product
+      );
+  }
+
+  goBack() {
+    this.navCtrl.parent.parent.pop();
   }
 
 }

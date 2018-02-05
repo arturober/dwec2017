@@ -1,10 +1,26 @@
 <ion-header>
-    <ion-navbar color="primary">
-        <ion-title>{{navParams.data.description}}</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-tabs>
-    <ion-tab [root]="productDetailsRoot" [rootParams]="navParams.data" tabTitle="Details" tabIcon="information-circle"></ion-tab>
-    <ion-tab [root]="productCommentsRoot" [rootParams]="navParams.data" tabTitle="Comments" tabIcon="chatboxes"></ion-tab>
-</ion-tabs>
+
+<ion-content padding>
+  <ion-card>
+    <img [src]="product.imageUrl">
+    <ion-card-content>
+      <h2>{{product.price | currency:'EUR':true}}</h2>
+      <p>{{product.available | date}}</p>
+    </ion-card-content>
+    <ion-item *ngIf="product.user">
+      <ion-avatar item-left>
+        <img [src]="product.user.avatar">
+      </ion-avatar>
+      <h2>{{product.user.name}}</h2>
+      <p>{{product.user.email}}</p>
+    </ion-item>
+  </ion-card>
+  <div>
+    <button ion-button block (tap)="goBack()">Go back</button>
+  </div>
+</ion-content>
