@@ -23,6 +23,11 @@ export class MyApp {
       { title: 'Camera', component: 'CameraPage' },
       { title: 'Barcode Scanner', component: 'BarcodePage' },
       { title: 'Device Motion', component: 'DeviceMotionPage' },
+      { title: 'Flash Light', component: 'FlashPage' },
+      { title: 'Local Notifications', component: 'LocalNotificationsPage' },
+      { title: 'SQLite', component: 'SqlitePage' },
+      { title: 'Google Plus', component: 'GooglePlusPage' },
+      { title: 'Contacts', component: 'ContactsPage' },
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
   }
 

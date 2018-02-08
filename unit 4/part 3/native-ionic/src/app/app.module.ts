@@ -12,6 +12,12 @@ import { Camera } from '@ionic-native/camera';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { DeviceMotion } from '@ionic-native/device-motion';
 import { DeviceOrientation } from '@ionic-native/device-orientation';
+import { Flashlight } from '@ionic-native/flashlight';
+import { FormsModule } from '@angular/forms';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { SQLite } from '@ionic-native/sqlite';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { Contacts } from '@ionic-native/contacts';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,7 @@ import { DeviceOrientation } from '@ionic-native/device-orientation';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +41,11 @@ import { DeviceOrientation } from '@ionic-native/device-orientation';
     Camera,
     BarcodeScanner,
     DeviceMotion,
-    DeviceOrientation
+    DeviceOrientation,
+    Flashlight,
+    LocalNotifications,
+    SQLite,
+    GooglePlus
   ]
 })
 export class AppModule {}
