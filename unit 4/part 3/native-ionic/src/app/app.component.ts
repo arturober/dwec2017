@@ -28,6 +28,7 @@ export class MyApp {
       { title: 'SQLite', component: 'SqlitePage' },
       { title: 'Google Plus', component: 'GooglePlusPage' },
       { title: 'Contacts', component: 'ContactsPage' },
+      { title: 'Network Info', component: 'NetworkPage' },
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
   }
 

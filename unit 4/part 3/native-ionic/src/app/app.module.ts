@@ -18,6 +18,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { SQLite } from '@ionic-native/sqlite';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Contacts } from '@ionic-native/contacts';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { Contacts } from '@ionic-native/contacts';
     Flashlight,
     LocalNotifications,
     SQLite,
-    GooglePlus
+    GooglePlus,
+    Network
   ]
 })
 export class AppModule {}

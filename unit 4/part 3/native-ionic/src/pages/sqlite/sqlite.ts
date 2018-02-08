@@ -17,7 +17,7 @@ export class SqlitePage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public sqlite: SQLite) {
+    public sqlite: SQLite) {
   }
 
   ionViewDidLoad() {
@@ -25,18 +25,18 @@ export class SqlitePage {
       name: 'my.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
+      this.db = db;
       db.executeSql('CREATE TABLE IF NOT EXISTS person (id integer primary key, name text, age integer)', {}).then(() => {
-          this.db = db;
-          db.executeSql('SELECT * FROM person', []).then(resultSet => {
-            for (let i = 0; i < resultSet.rows.length; i++) {
-              this.persons.push({
-                id: resultSet.rows.item(i).id,
-                name: resultSet.rows.item(i).name,
-                age: resultSet.rows.item(i).age
-              });
-            }
-          });
-        }).catch(e => console.error("Can't create table: ", e));
+        db.executeSql('SELECT * FROM person', []).then(resultSet => {
+          for (let i = 0; i < resultSet.rows.length; i++) {
+            this.persons.push({
+              id: resultSet.rows.item(i).id,
+              name: resultSet.rows.item(i).name,
+              age: resultSet.rows.item(i).age
+            });
+          }
+        });
+      }).catch(e => console.error("Can't create table: ", e));
     }).catch(error => {
       console.error("Connection error: ", error);
     });

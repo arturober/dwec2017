@@ -102,4 +102,6 @@
     </plugin>
     <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
     <engine name="android" spec="~6.4.0" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <allow-navigation href="http://192.168.0.61:8100" />
 </widget>
