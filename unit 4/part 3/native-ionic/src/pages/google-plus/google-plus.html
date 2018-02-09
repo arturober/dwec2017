@@ -35,5 +35,5 @@
     </ion-col>
   </ion-row>
   <button ion-button block color="primary" (click)="disconnect()" [disabled]="!isLogged">Disconnect account</button>
-  {{response | json}}
+  <div *ngIf="isLogged">{{response | json}}</div>
 </ion-content>

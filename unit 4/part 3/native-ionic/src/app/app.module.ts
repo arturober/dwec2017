@@ -18,7 +18,11 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { SQLite } from '@ionic-native/sqlite';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Contacts } from '@ionic-native/contacts';
-import { Network } from '@ionic-native/network';
+import { Facebook } from '@ionic-native/facebook';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { Network } from '@ionic-native/network';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB8pt95qMoUuI3GWIh_FQWd-vvoUaQKJfM'
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +54,11 @@ import { Network } from '@ionic-native/network';
     LocalNotifications,
     SQLite,
     GooglePlus,
-    Network
+    Contacts,
+    Facebook,
+    ImagePicker,
+    SocialSharing,
+    LaunchNavigator,
   ]
 })
 export class AppModule {}

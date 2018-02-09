@@ -27,8 +27,12 @@ export class MyApp {
       { title: 'Local Notifications', component: 'LocalNotificationsPage' },
       { title: 'SQLite', component: 'SqlitePage' },
       { title: 'Google Plus', component: 'GooglePlusPage' },
+      { title: 'Facebook', component: 'FacebookPage' },
       { title: 'Contacts', component: 'ContactsPage' },
       { title: 'Network Info', component: 'NetworkPage' },
+      { title: 'Image picker', component: 'ImagePickerPage' },
+      { title: 'Social Sharing', component: 'SocialSharePage' },
+      { title: 'Maps & Navigation', component: 'MapsNavigationPage' },
     ].sort((p1,p2) => p1.title.localeCompare(p2.title));
   }
 
